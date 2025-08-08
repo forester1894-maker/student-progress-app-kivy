@@ -27,14 +27,14 @@ jobs:
         run: |
           yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses
 
-      - name: Install Android SDK build-tools
+      - name: Install Android SDK platform-tools and build-tools
         run: |
-          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "build-tools;33.0.0"
+          yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --install "platform-tools" "build-tools;34.0.0"
 
       - name: Build Android APK
         run: |
           buildozer android debug
-      
+
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v4
         with:
