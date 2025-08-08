@@ -1,0 +1,33 @@
+name: Build APK
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-android:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9'
+
+      - name: Install buildozer
+        run: |
+          pip install buildozer[full]
+
+      - name: Build Android APK
+        run: |
+          buildozer android debug
+      
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-progress-apk
+          path: bin/student-progress-*.apk
