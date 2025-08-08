@@ -1,4 +1,4 @@
-name: Build APK
+nname: Build APK
 
 on:
   push:
@@ -18,9 +18,10 @@ jobs:
         with:
           python-version: '3.9'
 
-      - name: Install buildozer
+      - name: Install buildozer and dependencies
         run: |
           pip install buildozer[full]
+          pip install cython
 
       - name: Build Android APK
         run: |
