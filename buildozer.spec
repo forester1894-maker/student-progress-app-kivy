@@ -1,66 +1,41 @@
 [app]
-
-# (string) Title of your application
-title = Student Progress App
-
-# (string) Package name
+title = Табло Прогресса
 package.name = studentprogress
+package.domain = org.example.progress
 
-# (string) Package domain (needed for android/ios packaging)
-package.domain = org.test
+source.dir = .
+source.include_exts = py,png,jpg,kv,atlas,json,csv
 
-# (string) Application version
-version = 1.0
+version = 1.0.0
+# Используем стабильную версию Kivy
+requirements = kivy==2.3.0
 
-# (string) Kivy version you use
-# Kivy has an unstable API, so we have to specify this a minimum.
-# The default is a recent stable version from Git.
-kivy.version = 2.3.0
+# Ориентация landscape, как в оригинале
+orientation = landscape
+fullscreen = 0
 
-# (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,kivy==2.3.0,jnius
+# === КРИТИЧЕСКИ ВАЖНАЯ НАСТРОЙКА ===
+# Автоматически принимаем лицензию SDK.
+# Это предотвращает ошибку "license is not accepted".
+android.accept_sdk_license = True
 
-# (string) The Android NDK version to use
-# Make sure to use a version that works with your dependencies.
-# The 25b version is known to be stable.
-android.ndk = 25b
+# === РЕКОМЕНДУЕМЫЕ СТАБИЛЬНЫЕ ВЕРСИИ ===
+# Использование этих версий повышает шансы на успешную сборку.
+# Они соответствуют стандартным настройкам Buildozer и хорошо работают в GH Actions.
 
-# (string) Target Android API version
-# This must be the same as the target_sdk_version in build.gradle
+# Версия Android API (уровень API Android)
 android.api = 31
 
-# (string) Minimum Android API version
+# Минимальная поддерживаемая версия API
 android.minapi = 21
 
-# (list) Android permissions
-android.permissions = INTERNET
+# Версия Android NDK (набор инструментов для нативной разработки)
+# NDK r25b - это стабильная версия, рекомендуемая для многих сборок.
+android.ndk = 25b
 
-# (string) The build toolchain to use.
-# `stable` will use the latest stable release of p4a.
-# `develop` will use the development branch of p4a.
-# `local` will use a local clone of p4a (must be specified in `p4a.path`).
-# `default` will use the version of p4a included with buildozer.
-p4a.source = default
+# Версия NDK API (уровень API для NDK)
+android.ndk_api = 21
 
-# (list) Android architectures to build for.
-android.archs = arm64-v8a,armeabi-v7a
-
-# (list) Android services to build for
-# android.services = MyService:service.py
-
-# (string) The Java version to use
-# This must be set to `17` for API 31 and newer
-android.java = 17
-
-# (string) Your application's main file
-source.dir = .
-main.py = main.py
-
-# (list) Files to exclude from the APK
-# exclude_dirs = .buildozer, .git, .github
-
-# (string) Path to your icons
-icon.filename = %(source.dir)s/icon.png
-android.icon_background = #FFFFFF
-android.icon_foreground = %(source.dir)s/icon-fg.png
+[buildozer]
+log_level = 2
+warn_on_root = 1
