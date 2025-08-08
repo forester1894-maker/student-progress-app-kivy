@@ -9,6 +9,9 @@ package.name = studentprogress
 # (string) Package domain (needed for android/ios packaging)
 package.domain = org.test
 
+# (string) Application version
+version = 1.0
+
 # (string) Kivy version you use
 # Kivy has an unstable API, so we have to specify this a minimum.
 # The default is a recent stable version from Git.
